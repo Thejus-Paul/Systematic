@@ -8,7 +8,6 @@ const TaskList = (props: any) => {
         }
         return undefined;
     })
-
     return(
         <section className="task_list" id="task_list">
             {traverseTodoList}

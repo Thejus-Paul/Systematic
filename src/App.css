@@ -75,6 +75,7 @@ header {
   z-index: 3;
   height: 150px;
   max-height: 90%;
+  width: 350px;
   max-width: 90%;
   border-radius: 5px;
   padding: 1rem;
@@ -90,6 +91,16 @@ header {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+}
+.add_task #task_name {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: var(--grey);
+  color: var(--white)
 }
 .overlay {
   position: fixed;

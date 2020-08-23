@@ -6,10 +6,9 @@ import './App.css';
 interface State {
   taskID: number,
   taskName: string,
-  isComplete: boolean,
+  hasTaskCompleted: boolean,
   todoList: Array<object>
 }
-
 
 class App extends Component<{}, State> {
   constructor(props: {}) {
@@ -17,20 +16,19 @@ class App extends Component<{}, State> {
     this.state = {
       taskID: 1,
       taskName: '',
-      isComplete: false,
+      hasTaskCompleted: false,
       todoList: []
     }
     
     this.openModalBox = this.openModalBox.bind(this)
     this.closeModalBox = this.closeModalBox.bind(this)
     this.getTaskName = this.getTaskName.bind(this)
-    this.onTaskComplete = this.onTaskComplete.bind(this)
   }
   openModalBox = () => {
     const ADD_TASK = document.getElementById("add_task");
     const OVERLAY = document.getElementById("overlay");
-    ADD_TASK?.classList.toggle("closed");
-    OVERLAY?.classList.toggle("closed");
+    if(ADD_TASK) ADD_TASK.classList.toggle("closed");
+    if(OVERLAY) OVERLAY.classList.toggle("closed");
   }
   closeModalBox = () => {
     const ADD_TASK = document.getElementById("add_task");
@@ -39,7 +37,7 @@ class App extends Component<{}, State> {
       let task: object = {
         id: this.state.taskID,
         name: this.state.taskName,
-        completed: this.state.isComplete
+        completed: this.state.hasTaskCompleted
       }
       let currentTodoList: Array<object> = this.state.todoList;
       currentTodoList.push(task);
@@ -49,14 +47,12 @@ class App extends Component<{}, State> {
         todoList: currentTodoList
       });
     }
-    ADD_TASK?.classList.toggle("closed");
-    OVERLAY?.classList.toggle("closed");
+    if(ADD_TASK) ADD_TASK.classList.toggle("closed");
+    if(OVERLAY) OVERLAY.classList.toggle("closed");
   } 
   getTaskName = (e:{target: HTMLInputElement}) => {
     this.setState({taskName: e.target.value}) 
-  }
-  onTaskComplete = (task:any) => {
-    console.log(task)
+    e.target.value = ''
   }
   render() {
     return (
@@ -65,13 +61,13 @@ class App extends Component<{}, State> {
           <header>
               <span className="title">5y5t3m4t:c</span>
           </header>
-          <TaskList todoList={this.state.todoList} onTaskComplete={this.onTaskComplete} />
+          <TaskList todoList={this.state.todoList} />
           <ButtonList openModalBox={this.openModalBox} />
         </main>
         <section className="add_task closed" id="add_task">
           <div className="wrapper">
             <label>Name:</label>
-            <input type="text" id="task_name" onChange={this.getTaskName}/> 
+            <input type="text" id="task_name" onBlur={this.getTaskName}/> 
           </div>
           <input className="btn btn__add" onClick={this.closeModalBox} type="submit" value="OK" />
         </section>

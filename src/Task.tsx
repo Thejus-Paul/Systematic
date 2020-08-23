@@ -1,23 +1,18 @@
 import React from 'react';
 
 const Task = (props: any) => {
-    const onCompletion = () => {
-        props.onTaskComplete(props.id)
-        return props.id;
-    }
-    function complete() {
-        let taskID: string = onCompletion();
+    function hasCompleted() {
+        let taskID: string = props.id;
         let taskComplete = document.getElementById(taskID)?.children.item(0)?.children.item(0);
         let taskName = document.getElementById(taskID)?.children.item(0)?.children.item(1);   // Stores the current Task Name
         let completed_svg: string = '<path d="M30 15C30 23.2843 23.2843 30 15 30C6.7157 30 0 23.2843 0 15C0 6.71571 6.7157 0 15 0C23.2843 0 30 6.71571 30 15ZM13.265 22.9424L24.394 11.8133C24.7719 11.4354 24.7719 10.8227 24.394 10.4448L23.0254 9.07621C22.6475 8.69825 22.0348 8.69825 21.6568 9.07621L12.5806 18.1523L8.3432 13.9149C7.9653 13.537 7.35254 13.537 6.97458 13.9149L5.60601 15.2834C5.2281 15.6613 5.2281 16.2741 5.60601 16.652L11.8963 22.9423C12.2743 23.3203 12.887 23.3203 13.265 22.9424Z" fill="#47FFC2"/>';
         if(taskComplete) taskComplete.innerHTML = completed_svg; // Replaces current SVG with `completed_svg` 
         if(taskName) taskName.innerHTML = taskName.innerHTML.strike();     // Replaces Task Name with striked Task Name  
-        console.log('Task Completed!');    // Helps Debug Problems
-        return 0;
+        console.log('Task',props.id,'Completed!');    // Helps Debug Problems
     }    
     return(
         <div className="task" id={props.id}>
-            <div className="wrapper" onClick={complete}>
+            <div className="wrapper" onClick={hasCompleted}>
                 <svg width="15" height="15" viewBox="0 0 30 30" fill="none" className="task__complete" id="task__complete" xmlns="http://www.w3.org/2000/svg">
                     <path className="btn__complete" d="M15 0C6.71371 0 0 6.71371 0 15C0 23.2863 6.71371 30 15 30C23.2863 30 30 23.2863 30 15C30 6.71371 23.2863 0 15 0Z" fill="#A4A4A4"/>
                 </svg>
