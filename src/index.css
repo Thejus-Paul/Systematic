@@ -3,7 +3,16 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
-  font-family: 'Proxima',sans-serif;
+}
+html {
+  --dark-grey: #2a2a2a;
+  --darker-grey: #333333;
+  --grey: #646464;
+  --cyan: #47FFC2;
+  --dark-cyan: #3bd4a1;
+  --red: #EB5757;
+  --dark-red:#c54848;
+  --white: #FFFFFF;
 }
 body {
   width: 100%;
@@ -12,9 +21,4 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

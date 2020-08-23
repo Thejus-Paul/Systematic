@@ -1,35 +1,21 @@
-html {
-  --dark-grey: #2a2a2a;
-  --darker-grey: #333333;
-  --grey: #646464;
-  --cyan: #47FFC2;
-  --dark-cyan: #3bd4a1;
-  --red: #EB5757;
-  --dark-red:#c54848;
-  --white: #FFFFFF;
-}
-::selection {
-  color: var(--cyan);
-}
 main {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--dark-grey);
   justify-content: center;
   align-items: center;
+  background-color: var(--dark-grey);
 }
 header {
   margin: .5rem 0 1rem 0;
 }
 .title {
   font-size: 2.5rem;
-  font-family: 'Zilla';
   color: var(--white);
 }
 .task_list {
-  height: 200vh;
-  width: 95vw;
+  height: 100vh;
+  width: 95%;
   background-color: var(--grey);
   border-radius: 5px;
   overflow-y: scroll;
@@ -43,8 +29,8 @@ header {
   justify-content: space-between;
   padding: .75rem;
   margin: .5rem;
-  background-color: var(--darker-grey);
   border-radius: 5px;
+  background-color: var(--darker-grey);
 }
 .task:hover .btn__delete {
   fill: var(--red);
@@ -63,15 +49,15 @@ header {
   background-color: transparent;
 }
 .btn {
+  border: none;
+  border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
   padding: .75rem 1.5rem;
-  border-radius: 50px;
   font-size: 1rem;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
 }
 .btn__add {
   background-color: var(--dark-cyan);
@@ -85,6 +71,7 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 3;
   height: 150px;
   max-height: 90%;
   max-width: 90%;
@@ -97,18 +84,17 @@ header {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  z-index: 3;
 }
-.add_task div {
+.add_task .wrapper {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 .overlay {
-  z-index: 2;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.9);

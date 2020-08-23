@@ -9,9 +9,6 @@ interface State {
   todoList: Array<object>
 }
 
-interface TaskList {
-  todoList?: Array<object>
-}
 
 class App extends Component<{}, State> {
   constructor(props: {}) {
@@ -21,45 +18,39 @@ class App extends Component<{}, State> {
       taskName: '',
       todoList: []
     }
+    
     this.openModalBox = this.openModalBox.bind(this)
     this.closeModalBox = this.closeModalBox.bind(this)
     this.getTaskName = this.getTaskName.bind(this)
-    this.addTask = this.addTask.bind(this)
     this.completeTask = this.completeTask.bind(this)
   }
   openModalBox = () => {
-    const addTaskBtn = document.getElementById("add_task");
-    const overlay = document.getElementById("overlay");
-    addTaskBtn?.classList.toggle("closed");
-    overlay?.classList.toggle("closed");
+    const ADD_TASK = document.getElementById("add_task");
+    const OVERLAY = document.getElementById("overlay");
+    ADD_TASK?.classList.toggle("closed");
+    OVERLAY?.classList.toggle("closed");
   }
   closeModalBox = () => {
-    const addTaskBtn = document.getElementById("add_task");
-    const overlay = document.getElementById("overlay");
-    let taskName = this.state.taskName;
-    if(taskName !== "") {
+    const ADD_TASK = document.getElementById("add_task");
+    const OVERLAY = document.getElementById("overlay");
+    if(this.state.taskName !== "") {
       let task: object = {id: this.state.taskID, name: this.state.taskName}
       let currentTodoList: Array<object> = this.state.todoList;
       currentTodoList.push(task);
       this.setState({
-        taskID: this.state.taskID+1,
+        taskID: this.state.taskID + 1,
         taskName: '',
         todoList: currentTodoList
       });
-      console.log(this.state.todoList);
     }
-    addTaskBtn?.classList.toggle("closed");
-    overlay?.classList.toggle("closed");
+    ADD_TASK?.classList.toggle("closed");
+    OVERLAY?.classList.toggle("closed");
   } 
   getTaskName = (e:{target: HTMLInputElement}) => {
     this.setState({taskName: e.target.value}) 
   }
-
-  addTask = (name: string) => {
-
-  }
   completeTask = (task:any) => {
-    console.log(task)
+    
   }
   render() {
     return (
@@ -72,7 +63,7 @@ class App extends Component<{}, State> {
           <ButtonList openModalBox={this.openModalBox} />
         </main>
         <section className="add_task closed" id="add_task">
-          <div>
+          <div className="wrapper">
             <label>Name:</label>
             <input type="text" id="task_name" onChange={this.getTaskName}/> 
           </div>
