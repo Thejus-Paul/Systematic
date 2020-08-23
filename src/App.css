@@ -12,6 +12,7 @@ header {
 .title {
   font-size: 2.5rem;
   color: var(--white);
+  font-family:  'Zilla Slab',Courier, monospace;
 }
 .task_list {
   height: 100vh;
