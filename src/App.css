@@ -73,7 +73,7 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
-  height: 150px;
+  height: 175px;
   max-height: 90%;
   width: 350px;
   max-width: 90%;
@@ -111,7 +111,14 @@ header {
   height: 100%;
   background: rgba(0,0,0,0.9);
 }
-
 .closed {
   display: none;
+}
+#close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 2rem;
+  color: var(--red);
+  cursor: pointer;
 }
