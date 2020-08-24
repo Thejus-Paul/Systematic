@@ -23,36 +23,44 @@ class App extends Component<{}, State> {
     this.openModalBox = this.openModalBox.bind(this)
     this.closeModalBox = this.closeModalBox.bind(this)
     this.getTaskName = this.getTaskName.bind(this)
+    this.onTaskDelete = this.onTaskDelete.bind(this)
   }
   openModalBox = () => {
-    const ADD_TASK = document.getElementById("add_task");
-    const OVERLAY = document.getElementById("overlay");
-    if(ADD_TASK) ADD_TASK.classList.toggle("closed");
-    if(OVERLAY) OVERLAY.classList.toggle("closed");
+    const ADD_TASK = document.getElementById("add_task")
+    const OVERLAY = document.getElementById("overlay")
+    if(ADD_TASK) ADD_TASK.classList.toggle("closed")
+    if(OVERLAY) OVERLAY.classList.toggle("closed")
   }
   closeModalBox = () => {
-    const ADD_TASK = document.getElementById("add_task");
-    const OVERLAY = document.getElementById("overlay");
+    const ADD_TASK = document.getElementById("add_task")
+    const OVERLAY = document.getElementById("overlay")
     if(this.state.taskName !== "") {
       let task: object = {
         id: this.state.taskID,
         name: this.state.taskName,
         completed: this.state.hasTaskCompleted
       }
-      let currentTodoList: Array<object> = this.state.todoList;
-      currentTodoList.push(task);
+      let currentTodoList: Array<object> = this.state.todoList
+      currentTodoList.push(task)
       this.setState({
         taskID: this.state.taskID + 1,
         taskName: '',
         todoList: currentTodoList
       });
     }
-    if(ADD_TASK) ADD_TASK.classList.toggle("closed");
-    if(OVERLAY) OVERLAY.classList.toggle("closed");
-  } 
+    if(ADD_TASK) ADD_TASK.classList.toggle("closed")
+    if(OVERLAY) OVERLAY.classList.toggle("closed")
+  }
   getTaskName = (e:{target: HTMLInputElement}) => {
     this.setState({taskName: e.target.value}) 
     e.target.value = ''
+  }
+  onTaskDelete = (ID: number) => {
+    let updatedTodoList = this.state.todoList.filter((todo: any) => {
+        if( todo.id !== ID) return todo
+        else return null
+    })
+    this.setState({ todoList : updatedTodoList })
   }
   render() {
     return (
@@ -61,7 +69,7 @@ class App extends Component<{}, State> {
           <header>
               <span className="title">5y5t3m4t:c</span>
           </header>
-          <TaskList todoList={this.state.todoList} />
+          <TaskList todoList={this.state.todoList} onTaskDelete={this.onTaskDelete}/>
           <ButtonList openModalBox={this.openModalBox} />
         </main>
         <section className="add_task closed" id="add_task">

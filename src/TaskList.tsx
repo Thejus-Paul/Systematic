@@ -4,7 +4,13 @@ import Task from './Task';
 const TaskList = (props: any) => {
     const traverseTodoList = props.todoList.map((task: any)=>{
         if(task.length !== 0) {
-            return (<Task key={task.id} id={task.id} name={task.name} onTaskComplete={props.onTaskComplete} />)
+            return (<Task 
+                key={task.id} 
+                id={task.id} 
+                name={task.name} 
+                onTaskComplete={props.onTaskComplete}
+                onTaskDelete={props.onTaskDelete} 
+                />)
         }
         return undefined;
     })
