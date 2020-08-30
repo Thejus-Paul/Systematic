@@ -16,7 +16,7 @@
             "headers": [
                 {
                     "key": "Access-Control-Allow-Origin",
-                    "value": "https://calc-pwa.vercel.app"
+                    "value": "https://systematic.vercel.app"
                 },
                 {
                     "key": "Cache-Control",
