@@ -43,8 +43,8 @@
                     "value": "no-referrer"
                 },
                 {
-                    "key": "Feature-Policy",
-                    "value": "geolocation 'none'; microphone 'none'; camera 'none'; payment 'none'; midi 'none'; notifications 'none'; push 'none'; sync-xhr 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'none'; vibrate 'none'"
+                    "key": "Permissions-Policy",
+                    "value": "geolocation=(), microphone=(), camera=(), payment=(), midi=(), notifications=(), push=(), sync-xhr=(), magnetometer=(), gyroscope=(), speaker=(), vibrate=()"
                 },
                 {
                     "key": "Expect-CT",
